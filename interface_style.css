@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: none;
+    overflow: hidden;
+}
+
+.landing-page {
+    position: relative;
+    height: 100vh; /* the webpage will take up entire viewport */
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110%;
+    height: 100%;
+    background-image: url(images/temp_background1.jpeg);
+    background-size: cover;
+    animation: backgroundTransition 60s infinite; /* transition background */
+}
+
+@keyframes backgroundTransition {
+    0% {
+        background-image: url(images/temp_background2.jpeg);
+    }
+    50% {
+        background-image: url(images/temp_background3.jpeg);
+    }
+    100% {
+        background-image: url(images/temp_background2.jpeg);
+    }
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #1098ad;
+}
+
+p {
+    font-size: 18px;
+    margin-top: 10px;
+    color: white;
+}
+
+.login-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1098ad;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 20px;
+}

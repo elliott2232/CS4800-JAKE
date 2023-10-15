@@ -86,3 +86,24 @@ a:active {
   background-color: black;
   font-style: italic;
 }
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px; /* Adjust the width as needed */
+  height: 30px; /* Adjust the height as needed */
+  background-color: #1098ad;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.login-button img {
+  width: 20px; /* Adjust the image size as needed */
+  height: 20px; /* Adjust the image size as needed */
+  margin-right: 10px; /* Adjust the margin as needed */
+}
