@@ -16,20 +16,20 @@ body {
     left: 0;
     width: 110%;
     height: 100%;
-    background-image: url(images/temp_background1.jpeg);
+    background-image: url(images/library1.jpg);
     background-size: cover;
     animation: backgroundTransition 60s infinite; /* transition background */
 }
 
 @keyframes backgroundTransition {
     0% {
-        background-image: url(images/temp_background2.jpeg);
+        background-image: url(images/library2.jpg);
     }
     50% {
-        background-image: url(images/temp_background3.jpeg);
+        background-image: url(images/library3.jpg);
     }
     100% {
-        background-image: url(images/temp_background2.jpeg);
+        background-image: url(images/library1.jpg);
     }
 }
 
@@ -39,31 +39,40 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 10 10 20px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
-    font-size: 36px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
     color: #1098ad;
+    line-height: 1.5;
 }
+
 
 p {
-    font-size: 18px;
-    margin-top: 10px;
-    color: white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    color: gainsboro;
 }
-
 .login-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 15px 30px; /* Increase padding for a larger button */
     background-color: #1098ad;
-    color: white;
+    color: gainsboro;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 20px;
     margin-top: 20px;
+    transition: background-color 0.3s; /* Add a smooth hover effect */
+}
+
+.login-button:hover {
+    background-color: #0e8397; /* Darker shade on hover */
 }
