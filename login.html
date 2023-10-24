@@ -5,17 +5,18 @@
         <link href="login_style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <div class = "login-container">
+        <div class="background-image"></div>    
+        <div class="login-container">
             <h2>Login</h2>
-            <form>
-                <div class="form-group">
-                    <label for="email">Email: </label>
-                    <input type="email" id="email" name = "email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password: </label>
-                    <input type="password" id="password" name="password" required>
-                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="email">Email: </label>
+                        <input type="email" id="email" name = "email" required style="width:260px">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password: </label>
+                        <input type="password" id="password" name="password" required style="width:260px">
+                    </div>
                 <button type="submit" class="login-button" onclick="window.location.href='Profile.html'">
                     Log In
                 </button>
