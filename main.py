@@ -19,9 +19,9 @@ def search_articles(client, search_query, collection_name):
     database = client["Articles"]
     collection = database[collection_name]
 
-    results = collection.find()
+    results = []
 
-    for result in results:
+    for result in collection.find():
         article = Article()
         article.set_id(result.get("_id"))
         article.set_title(result.get("title"))
@@ -36,9 +36,9 @@ def search_articles(client, search_query, collection_name):
             len(intersection(search_query, article.get_keyphrase())) > 0
             or len(intersection(search_query, article.get_split_title())) > 0
         ):
-            print(article.get_title())
-            print(article.get_keyphrase())
-            print()
+            results.append(article.get_title())
+
+    return results
 
 def intersection(lst1, lst2):
     return [value for value in lst1 if value in lst2]
