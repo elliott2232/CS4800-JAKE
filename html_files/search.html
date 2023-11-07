@@ -30,11 +30,17 @@
     </div>
     <div class="right-side">
         <div class="search-section">
-            <div class="search-bar">
-                <img src="images/search.png" width="30px" height="40px" alt="Search Icon">
-                <input type="text" id="search-input" placeholder="Type an article, topic, or subject to find articles...">
+            <form id="search-form" method="POST" action="/search">
+              <div class="search-bar">
+                  <img src="images/search.png" width="30px" height="40px" alt="Search Icon">
+                  <input type="text" id="search-input" name="search_query" placeholder="Type an article, topic, or subject to find articles">
+                  <button type="submit">Search</button>
+              </div>
+            </form>
+            <p id="search-message">Search results will be displayed here.</p>
+            <div id="search-results">
+                <!-- Hopefully the results will be here -->
             </div>
-        <p id="search-message">Enter a search value to find articles.</p>
         </div>
     </div>
   </div>
@@ -42,5 +48,41 @@
   <div class="watermark">
     <p>&copy; The One Stop Research Shop - JAKE 2023</p>
   </div>
+
+<script>
+    document.getElementById("search-form").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the form from reloading the page
+
+        var searchQuery = document.getElementById("search-input").value;
+        var xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "/search", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var results = JSON.parse(xhr.responseText);
+                displayResults(results);
+            }
+        };
+
+        xhr.send("search_query=" + searchQuery);
+    });
+
+    function displayResults(results) {
+        var searchResults = document.getElementById("search-results");
+        searchResults.innerHTML = ""; // Clear any previous results
+
+        if (results.length === 0) {
+            searchResults.innerHTML = "<p>No results found.</p>";
+        } else {
+            var resultHtml = "<ul>";
+            for (var i = 0; i < results.length; i++) {
+                resultHtml += "<li>" + results[i] + "</li>";
+            }
+            resultHtml += "</ul>";
+            searchResults.innerHTML = resultHtml;
+        }
+    }
+</script>
 </body>
 </html>
