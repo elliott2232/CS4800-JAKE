@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 100%; /* This makes the sidebar the same height as the viewport */
+    background-color: #1098ad;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .container {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1098ad;
+  }
+
+  .left-side {
+    flex: 1;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    background-color: #1098ad;
+    overflow: auto;
+  }
+  
+  .filters h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .filters label {
+    display: block;
+    margin: 5px 0;
+  }
+
+  .right-side {
+    flex: 2;
+    padding: 20px;
+    background-color: white;
+    overflow: auto;
+  }
+  
+  .search-section {
+    flex: 2;
+    padding: 20px;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+  }
+  
+  #search-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+  
+  #search-input::placeholder {
+    font-style: italic;
+  }
+  
+  #search-message {
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+  
+  .watermark {
+    position: fixed;
+    bottom: 10px;
+    left: 50px;
+    font-size: 16px;
+    color: rgba(42, 42, 42, 0.493);
+    pointer-events: none;
+    font-style: italic;
+  }
