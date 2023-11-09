@@ -1,3 +1,4 @@
+#Allan and Elliott
 class Article:
 
     def __init__(self):
