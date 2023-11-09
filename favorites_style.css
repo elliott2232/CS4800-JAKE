@@ -26,7 +26,7 @@ body {
   #innerwrapper {
     display: flex;
     flex-wrap: nowrap;
-    width: 1200px; /* Adjust the total width of the inner wrapper */
+    width: 1200px; 
   }
   
   #innerwrapper img {
