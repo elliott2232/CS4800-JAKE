@@ -35,8 +35,8 @@ def search_articles(client, search_query, collection_name):
         article.set_keyphrase(result.get("keyphrase"))
 
         if (
-            len(intersection(search_query, article.get_keyphrase())) > 0
-            or len(intersection(search_query, article.get_split_title())) > 0
+            len(intersection(search_query.split(), article.get_keyphrase())) > 0
+            or len(intersection(search_query.split(), article.get_split_title())) > 0
         ):
             results.append(article.get_title())
 
@@ -51,10 +51,10 @@ def main():
 
     if client:
         search_query = input("Search: ")
-        split_query = search_query.split()
+        
         
         # Perform searches on different collections if needed
-        search_articles(client, split_query, "Computer Science")
+        search_articles(client, search_query, "Computer Science")
         # search_articles(client, split_query, "Math")  # Uncomment if searching in the Math collection
 
 if __name__ == "__main__":

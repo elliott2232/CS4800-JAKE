@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #1098ad;
+}
+
+
+.login-container {
+    text-align: center;
+    max-width: 300px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    box-shadow: 0 0 10px gray;
+    margin: 20px;
+    z-index: 2; /* Set a lower z-index to place it above the background image */
+}
+
+
+h2 {
+    margin-top: 0;
+}
+
+form {
+    text-align: center;
+}
+
+.form-group {
+    text-align: left;
+    margin: 20px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%; /* Full width input */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110%;
+    height: 100%;
+    background-image: url("/static/images/lake1.jpg");
+    background-size: cover;
+}
+
+.login-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1098ad;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+p {
+    margin-top: 20px;
+    color: gray;
+}
+
+a {
+    color: #1098ad;
+    text-decoration: none;
+}
+
+.login-button:hover {
+    background-color: #0e8397; /* Darker shade on hover */
+}

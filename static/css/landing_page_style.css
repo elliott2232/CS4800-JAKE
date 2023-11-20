@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: none;
+    overflow: hidden;
+}
+
+.landing-page {
+    position: relative;
+    height: 100vh; /* the webpage will take up entire viewport */
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110%;
+    height: 100%;
+    background-image: url("/static/images/library1.jpg");
+    background-size: cover;
+    animation: backgroundTransition 60s infinite; /* transition background */
+}
+
+@keyframes backgroundTransition {
+    0% {
+        background-image: url("/static/images/library2.jpg");
+    }
+    50% {
+        background-image: url("/static/images/library3.jpg");
+    }
+    100% {
+        background-image: url("/static/images/library1.jpg");
+    }
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 10 10 20px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: #1098ad;
+    line-height: 1.5;
+}
+
+
+p {
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    color: gainsboro;
+}
+.login-button {
+    display: inline-block;
+    padding: 15px 30px; /* Increase padding for a larger button */
+    background-color: #1098ad;
+    color: gainsboro;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+    margin-top: 20px;
+    transition: background-color 0.3s; /* Add a smooth hover effect */
+}
+
+.login-button:hover {
+    background-color: #0e8397; /* Darker shade on hover */
+}

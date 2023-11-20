@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='css/favorites_style.css') }}" rel="stylesheet" type="text/css"/> 
+    <title>Favorites Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class = "welcome-text">
+          <p>Favorites</p> <!-- Will need to make script to remember user's name-->
+        </div>
+        <div class="article-rows">
+          <div id="wrapper">
+            <div id="innerwrapper">
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">     
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="article-rows">
+          <h1>You Should Check Out</h1><br>
+          <div id="wrapper">
+            <div id="innerwrapper">
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">     
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
+              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
+            </div>
+          </div>
+        </div>
+        <br>
+          </div>
+        </div>
+        <!-- website content goes here -->
+      </div>
+      <nav class="sidebar">
+        <a href="{{ url_for('home') }}"><img src="/static/images/home.png" alt="Home"></a>
+        <a href="{{ url_for('user') }}"><img src="/static/images/user.png" alt="User"></a>
+        <a href="{{ url_for('favorites') }}"><img src="/static/images/yellow_star.png" alt="Star"></a>
+        <a href="{{ url_for('search') }}"><img src="/static/images/search.png" alt="Search"></a>
+        <a href="{{ url_for('history') }}"><img src="/static/images/history.png" alt="History"></a>
+        <a href="{{ url_for('help') }}"><img src="/static/images/help.png" alt="Help"></a>
+      </nav>
+      <div class="watermark">
+        <p>&copy; The One Stop Research Shop - JAKE 2023</p>
+      </div>
+</body>
+</html>
