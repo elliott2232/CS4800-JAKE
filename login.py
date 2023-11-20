@@ -22,11 +22,11 @@ maxLengthList = 3
 while len(verifyLogin) < maxLengthList:
     username = input("Enter your username: ")
     password = input("Enter your password: ")
-    verifyLogin.append(username, password)
+    verifyLogin.append(username, password) 
 
 result  = db.profiles.find_one(verifyLogin)
 
-
+#new
 
 
 
