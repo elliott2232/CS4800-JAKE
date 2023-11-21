@@ -52,6 +52,9 @@ class Article:
     def get_url(self):
         return self.__url
 
+    def get_hyperlinked_url(self):
+        return f'<a href="{self.__url}" target="_blank">{self.__title}</a>'
+
     def set_url(self, url):
         self.__url = urllib.parse.quote(str(url))
 
