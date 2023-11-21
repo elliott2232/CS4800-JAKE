@@ -29,7 +29,7 @@ def search():
         "mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority")
     results = search_articles(client, search_query, "Computer Science")
 
-    return jsonify({'results': results})  # get results in json format
+    return render_template('search.html', results = results)  # get results in json format
 
 @app.route('/search', methods=['GET'])
 def show_search_page():
