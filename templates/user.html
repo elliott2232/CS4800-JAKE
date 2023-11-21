@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile Page</title>
-</head>
-<body>
-    <p>need user database before creation of this webpage</p>
-</body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/profile_style.css') }}"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <h1>User Profile</h1>
+
+    <div>
+      <p>Email: {{ session['email'] }}</p>
+      <p>First Name: {{ session['fname'] }}</p>
+      <p>Last Name: {{ session['lname'] }}</p>
+      <!-- Add more information as needed -->
+    </div>
+  </body>
 </html>

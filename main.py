@@ -92,3 +92,30 @@ class UserRegistration:
         finally:
             # Close the MongoDB connection
             self.client.close()
+
+class UserLogin:
+    def __init__(self, mongodb_uri, database_name, collection_name):
+        self.client = MongoClient(mongodb_uri)
+        self.db = self.client[database_name]
+        self.collection = self.db[collection_name]
+
+    def _hash_password(self, password):
+        # Hash the password using SHA-256
+        return hashlib.sha256(password.encode()).hexdigest()
+
+    def authenticate_user(self, email, password):
+        try:
+            # Hash the provided password for comparison
+            hashed_password = self._hash_password(password)
+
+            # Search for the user in the collection
+            user = self.collection.find_one({"email": email, "password": hashed_password})
+
+            return user
+
+        except Exception as e:
+            print(f"Error authenticating user: {e}")
+
+        finally:
+            # Close the MongoDB connection
+            self.client.close()
