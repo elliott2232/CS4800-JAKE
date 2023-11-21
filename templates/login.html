@@ -12,6 +12,14 @@
   <body>
     <div class="background-image"></div>
     <div class="login-container">
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <ul class="flashes">
+        {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %}
       <h2>Login</h2>
       <form method="POST" action="{{ url_for('login') }}">
         <div class="form-group">
