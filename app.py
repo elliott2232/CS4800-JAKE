@@ -1,12 +1,13 @@
 #Joey
 
 from flask import Flask, request, render_template, jsonify
-from main import search_articles, connect_to_cluster
+from main import search_articles, connect_to_cluster, UserRegistration 
 
 app = Flask(__name__)
 
 app.static_folder = 'static' #flask only will display static files, so images and css pages needed to go in static folder
 
+user_registration=UserRegistration(mongodb_uri = "mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Users?retryWrites=true&w=majority", database_name = "Users", collection_name = "Profiles")
 
 @app.route('/')
 def landing_page():
@@ -28,9 +29,22 @@ def show_search_page():
 def login():
     return render_template('login.html')
 
-@app.route('/create_account')
+@app.route('/create_account', methods=['GET', 'POST'])
 def create_account():
+    if request.method == 'POST':
+        # Get user input from the form
+        email = request.form['email']
+        first_name = request.form['fname']
+        last_name = request.form['lname']
+        password = request.form['psw']
+
+        # Call the register_user method to register a new user
+        user_registration.register_user(email, first_name, last_name, password)
+
+        return "User registered successfully"
+
     return render_template('create_account.html')
+
 
 @app.route('/home')
 def home():

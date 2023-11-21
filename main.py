@@ -1,8 +1,9 @@
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from Article import * 
-from Interface import *
+from Boundaries import *
 from SearchController import *
+import hashlib
 
 def connect_to_cluster(cluster_url):
     try:
@@ -55,7 +56,39 @@ def main():
         search_articles(client, search_query, "Computer Science")
         # search_articles(client, split_query, "Math")  # Uncomment if searching in the Math collection
 
- 
-    
-if __name__ == "__main__":
-    main_interface()
+#Elliott
+class UserRegistration:
+    def __init__(self, mongodb_uri, database_name, collection_name):
+        self.client = MongoClient(mongodb_uri)
+        self.db = self.client[database_name]
+        self.collection = self.db[collection_name]
+
+    def _hash_password(self, password):
+        # Hash the password using SHA-256
+        return hashlib.sha256(password.encode()).hexdigest()
+
+    def register_user(self, email, first_name, last_name, password):
+        try:
+            # Hash the password before storing it
+            hashed_password = self._hash_password(password)
+
+            # Create a user document
+            user = {
+                "email": email,
+                "First name": first_name,
+                "Last name": last_name,
+                "password": hashed_password
+            }
+
+            # Insert the user document into the collection
+            result = self.collection.insert_one(user)
+
+            # Print a success message
+            print("User registered successfully with ID:", result.inserted_id)
+
+        except Exception as e:
+            print(f"Error registering user: {e}")
+
+        finally:
+            # Close the MongoDB connection
+            self.client.close()
