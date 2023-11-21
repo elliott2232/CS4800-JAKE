@@ -1,15 +1,24 @@
-#Allan and Elliott
+import urllib.parse
+import urllib.request
+
+
 class Article:
 
     def __init__(self):
         self.__id = ""
         self.__title = ""
+        self.__split_title = None
         self.__isPartOf = ""
         self.__publicationYear = 0
-        self.__url = ""
+        self.__url = None
         self.__creator = ""
         self.__publisher = ""
         self.__keyphrase = []
+        self.__queryMatch = 0
+        self.__view_bool = False
+
+
+
 
     def get_id(self):
         return self.__id
@@ -44,7 +53,7 @@ class Article:
         return self.__url
 
     def set_url(self, url):
-        self.__url = url
+        self.__url = urllib.parse.quote(str(url))
 
     def get_creator(self):
         return self.__creator
@@ -68,10 +77,16 @@ class Article:
         else:
             # Split keywords and remove ";" character
             split_keywords = keyphrase.split()
-            for i, keyword in enumerate(split_keywords):
-                split_keywords[i] = keyword.replace(";", "")
+            for word in range(len(split_keywords)):
+                split_keywords[word] = split_keywords[word].replace(";", "")
             self.__keyphrase = split_keywords
 
-    def __str__(self):
-        line = "ID: " + str(self.get_id()) + "\n Title: " + self.get_title() + "\n isPartOf: " + self.get_isPartOf() + "\n Publication Year: " + str(self.get_publicationYear()) + "\n URL: " + self.get_url() + "\n Creator: " + self.get_creator() + "\n Publisher: " + self.get_publisher() + "\n Keyphrase: " + ", ".join(self.get_keyphrase())
-        return line
+    def set_queryMatch(self, queryMatch):
+        self.__queryMatch = queryMatch
+        
+    def get_queryMatch(self):
+        return self.__queryMatch
+        
+    def open_url(self):
+        urllib.request.urlopen(self.__url)
+

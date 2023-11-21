@@ -1,14 +1,11 @@
-# Allan and Elliott
-
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from Article import Article 
+from Article import * 
+from Interface import *
+from SearchController import *
 
-def connect_to_cluster(cluster_url):
-    try:
-        # Create a new client and connect to the server
-        client = MongoClient(cluster_url, server_api=ServerApi('1'))
 
+<<<<<<< HEAD
         # Send a ping to confirm a successful connection
         client.admin.command('ping')
         print("Pinged your deployment. You successfully connected to MongoDB!")
@@ -56,6 +53,15 @@ def main():
         # Perform searches on different collections if needed
         search_articles(client, search_query, "Computer Science")
         # search_articles(client, split_query, "Math")  # Uncomment if searching in the Math collection
+=======
+def main_interface(): 
+  
+  interface = Interface()
+  interface.search_button("Infrastructure")
+  
+>>>>>>> 46fd5b0d524256e3e87c05bdae7bcf18bae253d2
 
+ 
+    
 if __name__ == "__main__":
-    main()
+    main_interface()
