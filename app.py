@@ -1,6 +1,6 @@
 # Joey
 
-from flask import Flask, request, render_template, jsonify, redirect, url_for, session
+from flask import Flask, request, render_template, jsonify, redirect, url_for, session, flash
 from main import search_articles, connect_to_cluster, UserRegistration, UserLogin
 import secrets
 
@@ -53,7 +53,7 @@ def login():
 
             return redirect(url_for('home'))
         else:
-            return render_template('login.html', message='Invalid username or password')
+            flash('Invalid username or password', 'error')
 
     return render_template('login.html')
 
