@@ -3,21 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile Page</title>
+    <title>{{ session['fname'] }}'s Profile Page</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/profile_style.css') }}"
+      href="{{ url_for('static', filename='css/user_style.css') }}"
       type="text/css"
     />
   </head>
   <body>
-    <h1>User Profile</h1>
-
-    <div>
+    <div class='container'>
+      <div class="user-text">
+        <p>{{ session['fname'] }}'s Profile:</p>
+      </div>
+      <div class="user-info-text">
       <p>Email: {{ session['email'] }}</p>
       <p>First Name: {{ session['fname'] }}</p>
       <p>Last Name: {{ session['lname'] }}</p>
-      <!-- Add more information as needed -->
+    </div>
+    </div>
+    <nav class="sidebar">
+      <a href="{{ url_for('home') }}"
+        ><img src="/static/images/home.png" alt="Home"
+      /></a>
+      <a href="{{ url_for('user') }}"
+        ><img src="/static/images/user.png" alt="User"
+      /></a>
+      <a href="{{ url_for('favorites') }}"
+        ><img src="/static/images/yellow_star.png" alt="Star"
+      /></a>
+      <a href="{{ url_for('search') }}"
+        ><img src="/static/images/search.png" alt="Search"
+      /></a>
+      <a href="{{ url_for('history') }}"
+        ><img src="/static/images/history.png" alt="History"
+      /></a>
+      <a href="{{ url_for('help') }}"
+        ><img src="/static/images/help.png" alt="Help"
+      /></a>
+    </nav>
+    <div class="watermark">
+      <p>&copy; The One Stop Research Shop - JAKE 2023</p>
     </div>
   </body>
 </html>

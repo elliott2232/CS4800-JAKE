@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: Montserrat, sans-serif;
+  }
+  
+  .container {
+    flex-grow: 1; /* Allow content to grow and take available space */
+  }
+ 
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 100%; /* This makes the sidebar the same height as the viewport */
+    background-color: #1098ad;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sidebar a {
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    margin: 10px 0;
+  }
+  
+  .sidebar a img {
+    width: 30px;
+  }
+  
+  .sidebar a:hover {
+    background-color: #0e8397;
+  }
+  
+  .watermark {
+    position: fixed;
+    bottom: 10px;
+    right: 100px;
+    font-size: 16px;
+    color: rgba(116, 115, 115, 0.493);
+    pointer-events: none;
+    font-style: italic;
+  }
+  
+  .user-text {
+    font-style: italic;
+    margin-top: -40px;
+    padding: 20px;
+    color: #1098ad;
+  }
+  
+  .user-text p {
+    font-size: 64px;
+  }
+
+  .user-info-text {
+    margin-top: -90px;
+    padding: 20px;
+    color: rgba(116, 115, 115, 0.493);;
+  }
+  
+  .user-info-text p {
+    font-size: 40px;
+  }

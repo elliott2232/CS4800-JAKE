@@ -18,8 +18,6 @@ class Article:
         self.__view_bool = False
 
 
-
-
     def get_id(self):
         return self.__id
 

@@ -1,6 +1,6 @@
 # Joey
 
-from flask import Flask, request, render_template, jsonify, redirect, url_for, session, flash
+from flask import Flask, request, render_template, jsonify, redirect, url_for, session
 from main import search_articles, connect_to_cluster, UserRegistration, UserLogin
 import secrets
 
@@ -29,7 +29,7 @@ def search():
         "mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority")
     results = search_articles(client, search_query, "Computer Science")
 
-    return render_template('search.html', results = results)  # get results in json format
+    return render_template('search.html', results = results)  # get results 
 
 @app.route('/search', methods=['GET'])
 def show_search_page():
@@ -45,7 +45,7 @@ def login():
         user = user_login.authenticate_user(email, password)
 
         if user:
-            # Store user information in session (you can customize this based on your needs)
+            # Store user information in session 
             session['user_id'] = str(user.get('_id'))
             session['email'] = user.get('email')
             session['fname'] = user.get('First name')
@@ -53,7 +53,7 @@ def login():
 
             return redirect(url_for('home'))
         else:
-            flash('Invalid username or password', 'error')
+            return render_template('login.html', message='Invalid username or password')
 
     return render_template('login.html')
 
@@ -81,9 +81,27 @@ def home():
 def user():
     return render_template('user.html')
 
-@app.route('/favorites')
+@app.route('/add_favorite/<article_title>') #this is needed to add favorites and route them to fav page
+def add_favorite(article_title):
+    if 'favorites' not in session:
+        session['favorites'] = []
+
+    if article_title not in session['favorites']:
+        session['favorites'].append(article_title)
+
+    return redirect(url_for('favorites'))
+
+@app.route('/remove_favorite/<article_title>') #removing favorites
+def remove_favorite(article_title):
+    if 'favorites' in session and article_title in session['favorites']:
+        session['favorites'].remove(article_title)
+
+    return redirect(url_for('favorites'))
+
+@app.route('/favorites') #get the user's favorites and add them to the favorites html
 def favorites():
-    return render_template('favorites.html')
+    favorites_list = session.get('favorites', [])
+    return render_template('favorites.html', favorites_list=favorites_list)
 
 @app.route('/history')
 def history():
