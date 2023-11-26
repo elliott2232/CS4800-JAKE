@@ -14,16 +14,25 @@
         <div class="article-rows">
           <div id="wrapper">
             <div id="innerwrapper">
-              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
-              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
-              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
-              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
-              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">     
-              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
-              <img src="/static/images/image-not-available.jpeg" width="120px" height="180px">
+              {% for favorite in favorites_list %}
+                <p>{{ favorite }}</p>
+                <button onclick="removeFromFavorites('{{ favorite }}')">Remove</button>
+                {% endfor %}
             </div>
           </div>
         </div>
+        <script>
+          function removeFromFavorites(articleTitle) {
+              var xhr = new XMLHttpRequest();
+              xhr.open("GET", "/remove_favorite/" + encodeURIComponent(articleTitle), true);
+              xhr.onreadystatechange = function () {
+                  if (xhr.readyState === 4 && xhr.status === 200) {
+                      location.reload();  // Reload the page after removing from favorites
+                  }
+              };
+              xhr.send();
+          }
+      </script>
         <br>
         <div class="article-rows">
           <h1>You Should Check Out</h1><br>
