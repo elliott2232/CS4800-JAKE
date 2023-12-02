@@ -10,10 +10,15 @@ def test_main():
 
     boundaries = Boundaries()
     
-    #boundaries.search_all_button(input("Enter search: "))
+    boundaries.search_all_button(input("Enter search: "))
+    #boundaries.search_math_button()
+    #boundaries.search_computer_science_button()
     
-    boundaries.search_math()
-   
+    if input() == "y":
+        boundaries.sort_by_date_button()
+        #boundaries.sort_by_relevancy_button()
+        
+    
    
 if __name__ == "__main__":
     test_main()
