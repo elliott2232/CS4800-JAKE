@@ -29,7 +29,7 @@ class SearchController:
         
         
         self.sort_by_relevancy()
-        self.print_list()
+        
             
             
     
@@ -113,7 +113,7 @@ class SearchController:
             self.__article_list.append(article)
 
              
-        self.print_list()
+
             
 
 
@@ -144,7 +144,7 @@ class SearchController:
             self.__article_list.append(article)
 
              
-        self.print_list()
+
 
             
             
@@ -156,14 +156,14 @@ class SearchController:
     #Function to sort list by date
     def sort_by_date(self):
         self.__article_list.sort(key = lambda article: article.get_publicationYear(), reverse = True)
-        self.print_list()
+       
     
     
     
     #Function to sort list by relevancy
     def sort_by_relevancy(self):
         self.__article_list.sort(key = lambda article: article.get_queryMatch(), reverse = True)
-        self.print_list()
+    
    
     
     
