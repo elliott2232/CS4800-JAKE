@@ -1,32 +1,49 @@
-""""
-from Article import *
 from SearchController import *
+from Article import *
 
 
 
-class Interface:
-    def search_button(click, query):
-        if click:
-            search_controller = SearchController()
-            search_controller.search(query)
+class Boundaries:
     
-    def view_article_button(click):
-        pass
+
+    def __init__(self):
         
-    def login_button(click):
-        pass
-        
-    def create_account_button(click):
-        pass
-        
-    def favorite_button(click):
-        pass
-        
-    def view_favorites_button(click):
-        pass
+        self.search_controller = SearchController()
+    
+    
+    
+    
+    
+    
+    def search_all_button(self, query):
+        self.search_controller.search_all(query)
         
 
-
-        IN PROGRESS NOT COMPLETED
+    def search_math_button(self):
+        self.search_controller.search_math()
         
-"""    
+        
+    def search_computer_science_button(self):
+        self.search_controller.search_computer_science()
+        
+    
+    def login_signup_button(self):
+        pass
+        
+        
+    def favorite_button(self):
+        pass
+        
+        
+    def view_favorites_button(self):
+        pass
+        
+        
+    def sort_by_date_button(self):
+        self.search_controller.sort_by_date()
+        
+        
+    def sort_by_relevancy_button(self):
+        self.search_controller.sort_by_relevancy()
+    
+    
