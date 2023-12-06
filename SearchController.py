@@ -16,20 +16,24 @@ class SearchController:
     #Searches through all articles in database
     def search_all_button(self, query):
         
+        self.__article_list.clear()
         
         #Collects articles from Computer Science, search_collection() does query comparisons
         list1 = self.search_collection("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority", "Articles", "Computer Science", query)          
         for item in range(len(list1)):
+            list1[item].set_is_computer_science(True)
             self.__article_list.append(list1[item])
         
         #Collects articles from Math, search_collection() does query comparisons
         list2 = self.search_collection("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority", "Articles", "Math", query) 
         for item in range(len(list2)):
+            list2[item].set_is_math(True)
             self.__article_list.append(list2[item])       
         
         
         
         self.sort_by_relevancy()
+        
         return self.get_article_list()
         #self.print_list()
         
@@ -95,11 +99,12 @@ class SearchController:
 
 
     #Function to return and print all aricles in computer science collection
-    def search_computer_science(self):
+    def show_all_computer_science_button(self):
         client = MongoClient("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority")
         database = client["Articles"]
         collection = database["Computer Science"]
         
+        self.__article_list.clear()
         article_list = []
         
         results = collection.find()
@@ -125,11 +130,12 @@ class SearchController:
 
 
     #Function to return and print all aricles in math collection
-    def search_math(self):
+    def show_all_math_button(self):
         client = MongoClient("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority")
         database = client["Articles"]
         collection = database["Math"]
         
+        self.__article_list.clear()
         article_list = []
         
         results = collection.find()
@@ -157,17 +163,22 @@ class SearchController:
      
             
     #Function to sort list by date
-    def sort_by_date(self):
+    def sort_by_date_button(self):
         self.__article_list.sort(key = lambda article: article.get_publicationYear(), reverse = True)
-      
+        self.get_article_list()
     
     
     
     #Function to sort list by relevancy
+    def sort_by_relevancy_button(self):
+        self.__article_list.sort(key = lambda article: article.get_queryMatch(), reverse = True)
+        self.get_article_list()
+        
+   
+   #Function to sort list by relevancy
     def sort_by_relevancy(self):
         self.__article_list.sort(key = lambda article: article.get_queryMatch(), reverse = True)
       
-   
     
     
     
@@ -186,10 +197,10 @@ class SearchController:
                 break
             '''
     
-    #Maybe not create favorite here? TBD
-    def favorite(self, article_selected):
+    
+    def filter_computer_science():
         pass
-        
+    
     
     def get_article_list(self):
         return self.__article_list
