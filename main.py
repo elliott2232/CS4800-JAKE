@@ -3,6 +3,7 @@ from pymongo.server_api import ServerApi
 from Article import * 
 from Boundaries import *
 from SearchController import *
+from user import User
 import hashlib
 
 def connect_to_cluster(cluster_url):
@@ -64,25 +65,13 @@ class UserRegistration:
         self.db = self.client[database_name]
         self.collection = self.db[collection_name]
 
-    def _hash_password(self, password):
-        # Hash the password using SHA-256
-        return hashlib.sha256(password.encode()).hexdigest()
 
-    def register_user(self, email, first_name, last_name, password):
+
+    def register_user(self, email, first_name, last_name, password, favorite=None): #doesnt matter favorite will not be handled on sign in, its default value is none
         try:
-            # Hash the password before storing it
-            hashed_password = self._hash_password(password)
-
-            # Create a user document
-            user = {
-                "email": email,
-                "First name": first_name,
-                "Last name": last_name,
-                "password": hashed_password
-            }
-
+            user_obj = User(email, first_name, last_name, password, favorite)
             # Insert the user document into the collection
-            result = self.collection.insert_one(user)
+            result = self.collection.insert_one(user_obj.to_dict())
 
             # Print a success message
             print("User registered successfully with ID:", result.inserted_id)
@@ -91,8 +80,9 @@ class UserRegistration:
             print(f"Error registering user: {e}")
 
         finally:
-            # Close the MongoDB connection
-            self.client.close()
+            # Close the MongoDB connection   
+               #self.client.close()
+               pass
 
 class UserLogin:
     def __init__(self, mongodb_uri, database_name, collection_name):
@@ -119,4 +109,5 @@ class UserLogin:
 
         finally:
             # Close the MongoDB connection
-            self.client.close()
+             #self.client.close()
+             pass
