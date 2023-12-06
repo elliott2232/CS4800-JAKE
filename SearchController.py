@@ -2,6 +2,7 @@ from Article import *
 from pymongo import MongoClient
 
 
+
 class SearchController:
 
     def __init__(self):
@@ -13,7 +14,7 @@ class SearchController:
         
         
     #Searches through all articles in database
-    def search_all(self, query):
+    def search_all_button(self, query):
         
         
         #Collects articles from Computer Science, search_collection() does query comparisons
@@ -29,6 +30,8 @@ class SearchController:
         
         
         self.sort_by_relevancy()
+        return self.get_article_list()
+        #self.print_list()
         
             
             
@@ -112,7 +115,7 @@ class SearchController:
             article.set_keyphrase(result.get("keyphrase"))
             self.__article_list.append(article)
 
-             
+        self.print_list()    
 
             
 
@@ -143,7 +146,7 @@ class SearchController:
             article.set_is_math(True)
             self.__article_list.append(article)
 
-             
+        self.print_list()     
 
 
             
@@ -156,14 +159,14 @@ class SearchController:
     #Function to sort list by date
     def sort_by_date(self):
         self.__article_list.sort(key = lambda article: article.get_publicationYear(), reverse = True)
-       
+      
     
     
     
     #Function to sort list by relevancy
     def sort_by_relevancy(self):
         self.__article_list.sort(key = lambda article: article.get_queryMatch(), reverse = True)
-    
+      
    
     
     
@@ -184,8 +187,13 @@ class SearchController:
             '''
     
     #Maybe not create favorite here? TBD
-    def favorite(self):
+    def favorite(self, article_selected):
         pass
+        
+    
+    def get_article_list(self):
+        return self.__article_list
+        
         
     
     
