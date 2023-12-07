@@ -2,6 +2,8 @@
 
 from flask import Flask, request, render_template, jsonify, redirect, url_for, session
 from main import search_articles, connect_to_cluster, UserRegistration, UserLogin
+from SearchController import *
+from bson import ObjectId
 import secrets
 
 app = Flask(__name__)
@@ -25,9 +27,7 @@ def landing_page():
 @app.route('/search', methods=['POST'])
 def search():
     search_query = request.form['search_query']  # Get the search query from the form
-    client = connect_to_cluster(
-        "mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority")
-    results = search_articles(client, search_query, "Computer Science")
+    results = SearchController.search_all_button(search_query)
 
     return render_template('search.html', results = results)  # get results 
 
@@ -83,34 +83,45 @@ def user():
 
 @app.route('/add_favorite/<article_title>') #this is needed to add favorites and route them to fav page
 def add_favorite(article_title):
-    if 'favorites' not in session:
-        session['favorites'] = []
+    if 'user_id' in session:
+        user_id = session['user_id']
+        user = user_registration.get_user_by_id(user_id)
 
-    if article_title not in session['favorites']:
-        session['favorites'].append(article_title)
+        if user:
+            user.add_favorite(article_title)
+            user_registration.update_user(user_id, user.to_dict())
 
     return redirect(url_for('favorites'))
 
-@app.route('/remove_favorite/<article_title>') #removing favorites
+@app.route('/remove_favorite/<article_title>')
 def remove_favorite(article_title):
-    if 'favorites' in session and article_title in session['favorites']:
-        session['favorites'].remove(article_title)
+    if 'user_id' in session:
+        user_id = session['user_id']
+        user = user_registration.get_user_by_id(user_id)
+
+        if user:
+            if article_title in user.favorite:
+                user.remove_favorite(article_title)
+                user_registration.update_user(user_id, user.to_dict())
 
     return redirect(url_for('favorites'))
+
+
 
 @app.route('/favorites') #get the user's favorites and add them to the favorites html
 def favorites():
-    favorites_list = session.get('favorites', [])
-    return render_template('favorites.html', favorites_list=favorites_list)
+    client = connect_to_cluster(
+        "mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Users?retryWrites=true&w=majority")
+    results = search_articles(client, "favorites", "Profiles")
+    if 'user_id' in session:
+        user_id = session['user_id']
+        user = user_registration.get_user_by_id(user_id)
 
-@app.route('/history')
-def history():
-    return render_template('history.html')
-
-@app.route('/help')
-def help():
-    return render_template('help.html')
+        if user:
+            favorites_list = user.favorite
+            return render_template('favorites.html', favorites_list=favorites_list)
+        
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)
-
