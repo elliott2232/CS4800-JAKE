@@ -1,9 +1,9 @@
 # Joey
 
-from flask import Flask, request, render_template, jsonify, redirect, url_for, session
+from flask import Flask, request, render_template, flash, jsonify, redirect, url_for, session
 from main import search_articles, connect_to_cluster, UserRegistration, UserLogin
-from SearchController import *
 from bson import ObjectId
+from SearchController import SearchController
 import secrets
 
 app = Flask(__name__)
@@ -20,6 +20,8 @@ user_login = UserLogin(
     mongodb_uri="mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Users?retryWrites=true&w=majority",
     database_name="Users", collection_name="Profiles")
 
+search_controller = SearchController()
+
 @app.route('/')
 def landing_page():
     return render_template('landing_page.html')
@@ -27,9 +29,51 @@ def landing_page():
 @app.route('/search', methods=['POST'])
 def search():
     search_query = request.form['search_query']  # Get the search query from the form
-    results = SearchController.search_all_button(search_query)
+    results = search_controller.search_all_button(search_query)
 
-    return render_template('search.html', results = results)  # get results 
+    return render_template('search.html', results = results)
+
+@app.route('/search_computer_science_folder')
+def search_computer_science_folder():
+    # Call the function to search computer science articles
+    search_controller.show_all_computer_science_button()  
+    article_list = search_controller.get_article_list()
+    return render_template('show_computer_science.html', article_list=article_list)
+
+@app.route('/search_math_folder')
+def search_math_folder():
+    # Call the function to search math articles
+    search_controller.show_all_math_button()  
+    article_list = search_controller.get_article_list()
+    return render_template('show_math.html', article_list=article_list)
+
+@app.route('/search_physics_folder')
+def search_physics_folder():
+    # Call the function to search physics articles
+    search_controller.show_all_physics_button()  
+    article_list = search_controller.get_article_list()
+    return render_template('show_physics.html', article_list=article_list)
+
+@app.route('/search_english_folder')
+def search_english_folder():
+    # Call the function to search english articles
+    search_controller.show_all_english_button()  
+    article_list = search_controller.get_article_list()
+    return render_template('show_english.html', article_list=article_list)
+
+@app.route('/search_history_folder')
+def search_history_folder():
+    # Call the function to search history articles
+    search_controller.show_all_history_button()  
+    article_list = search_controller.get_article_list()
+    return render_template('show_history.html', article_list=article_list)
+
+@app.route('/search_biology_folder')
+def search_biology_folder():
+    # Call the function to search biology articles
+    search_controller.show_all_biology_button()  
+    article_list = search_controller.get_article_list()
+    return render_template('show_biology.html', article_list=article_list)
 
 @app.route('/search', methods=['GET'])
 def show_search_page():
@@ -53,8 +97,8 @@ def login():
 
             return redirect(url_for('home'))
         else:
-            return render_template('login.html', message='Invalid username or password')
-
+            flash('Invalid username or password', 'error')
+            return render_template('login.html')
     return render_template('login.html')
 
 @app.route('/create_account', methods=['GET', 'POST'])
@@ -122,6 +166,14 @@ def favorites():
             return render_template('favorites.html', favorites_list=favorites_list)
         
     return redirect(url_for('login'))
+
+@app.route('/history')
+def history():
+    return render_template('history.html')
+
+@app.route('/help')
+def help():
+    return render_template('help.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

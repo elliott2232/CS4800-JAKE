@@ -1,7 +1,6 @@
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from Article import * 
-from Boundaries import *
 from SearchController import *
 from user import User
 from bson import ObjectId

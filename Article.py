@@ -15,6 +15,11 @@ class Article:
         self.__queryMatch = 0
         self.__is_computer_science = False
         self.__is_math = False
+        self.__is_biology = False
+        self.__is_english = False
+        self.__is_physics = False
+        self.__is_history = False
+        
 
 
     def get_id(self):
@@ -123,14 +128,38 @@ class Article:
         return self.__is_math   
     
     
+    def set_is_biology(self, bool):
+        self.__is_biology = bool
     
+    def get_is_biology(self):
+        return self.__is_biology  
+        
+        
+    def set_is_physics(self, bool):
+        self.__is_physics = bool
+    
+    def get_is_physics(self):
+        return self.__is_physics   
+        
+        
+    def set_is_english(self, bool):
+        self.__is_english = bool
+    
+    def get_is_english(self):
+        return self.__is_english   
 
-    def favorite_article(self):
-        pass
+    
+    def set_is_history(self, bool):
+        self.__is_history = bool
+        
+    def set_is_history(self, bool):
+        return self.__is_history
 
+   
         
         
 
     def __str__(self):
         line =  "Title: " + self.get_title() + "\n" + "Author: " + self.get_creator() + "\n" + "Date published: " + str(self.get_publicationYear()) + "\n" + "URL: " + self.get_url() + "\n" + "\n"
         return line
+
