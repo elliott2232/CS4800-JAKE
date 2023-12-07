@@ -24,139 +24,34 @@
         <p>Welcome back User!</p>
         {% endif %}
       </div>
-      <div class="article-rows">
-        <h1>Continue Reading</h1>
-        <br />
-        <div id="wrapper">
-          <div id="innerwrapper">
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-          </div>
+      <div class="folder-container">
+        <!-- Individual folder divs -->
+        <div class="folder-item">
+          <img src="/static/images/folder.png" alt="Folder 1">
+          <p>Math</p>
         </div>
-      </div>
-      <br />
-      <div class="article-rows">
-        <h1>Mathematics Articles</h1>
-        <br />
-        <div id="wrapper">
-          <div id="innerwrapper">
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-          </div>
+        <div class="folder-item">
+          <img src="/static/images/folder.png" alt="Folder 2">
+          <p>Computer Science</p>
         </div>
-      </div>
-      <br />
-      <div class="article-rows">
-        <h1>Biology Articles</h1>
-        <br />
-        <div id="wrapper">
-          <div id="innerwrapper">
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-            <img
-              src="/static/images/image-not-available.jpeg"
-              width="120px"
-              height="180px"
-            />
-          </div>
+        <div class="folder-item">
+          <img src="/static/images/folder.png" alt="Folder 1">
+          <p>History</p>
         </div>
+        <div class="folder-item">
+          <img src="/static/images/folder.png" alt="Folder 2">
+          <p>English</p>
+        </div>
+        <div class="folder-item">
+          <img src="/static/images/folder.png" alt="Folder 1">
+          <p>Biology</p>
+        </div>
+        <div class="folder-item">
+          <img src="/static/images/folder.png" alt="Folder 2">
+          <p>Physics</p>
+        </div>
+        
       </div>
-      <!-- website content goes here -->
-    </div>
     <nav class="sidebar">
       <a href="{{ url_for('home') }}"
         ><img src="/static/images/home.png" alt="Home"
@@ -169,12 +64,6 @@
       /></a>
       <a href="{{ url_for('search') }}"
         ><img src="/static/images/search.png" alt="Search"
-      /></a>
-      <a href="{{ url_for('history') }}"
-        ><img src="/static/images/history.png" alt="History"
-      /></a>
-      <a href="{{ url_for('help') }}"
-        ><img src="/static/images/help.png" alt="Help"
       /></a>
     </nav>
     <div class="watermark">
