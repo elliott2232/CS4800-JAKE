@@ -1,3 +1,4 @@
+<!--Joey-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,24 +10,7 @@
 <body>
   <div class="container">
     <div class="left-side">
-        <div class="filters">
-        <h2>Filter by Topic</h2>
-        <label><input type="checkbox" name="topic" value="math"> Math</label>
-        <label><input type="checkbox" name="topic" value="biology"> Biology</label>
-        <label><input type="checkbox" name="topic" value="physics"> Physics</label>
-        <label><input type="checkbox" name="topic" value="health"> Health</label>
-        <label><input type="checkbox" name="topic" value="computer-science"> Computer Science</label>
-        <label><input type="checkbox" name="topic" value="english"> English</label>
-        <label><input type="checkbox" name="topic" value="statistics"> Statistics</label>
-        <label><input type="checkbox" name="topic" value="environmentalism"> Environmentalism</label>
-        <label><input type="checkbox" name="topic" value="psychology"> Psychology</label>
-        
-        <h2>Filter by Year</h2>
-        <input type="range" name="year" min="1980" max="2023">
-        
-        <h2>Filter by Author</h2>
-        <input type="text" name="author" placeholder="Type author's name">
-
+        <div class="filters">        
         <H3>
             <a href="{{ url_for('home') }}">Go Back to Home</a>
         </H3>
@@ -49,14 +33,28 @@
               {% for result in results %}
               <li>
                 <a href="{{ result.get_url() }}" target="_blank"
-                  >{{ result.get_title() }}</a
-                >
+                  >{{ result.get_title() }}</a>
+                  <button onclick="addToFavorites('{{ result.get_title() }}')">Favorite</button>
               </li>
               {% endfor %}
             </ul>
             {% else %}
             <p>No results found.</p>
             {% endif %}
+          <!-- this function actually adds the article to the app.py so it can be appended to the user db-->
+          <script>
+            function addToFavorites(articleTitle) {
+              fetch(`/add_favorite/${encodeURIComponent(articleTitle)}`)
+                .then(response => {
+                  if (response.ok) {
+                    alert(`${articleTitle} added to favorites!`);
+                  } else {
+                    alert(`Failed to add ${articleTitle} to favorites.`);
+                  }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+          </script>
           </div>
         </div>
     </div>
