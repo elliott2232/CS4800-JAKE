@@ -16,20 +16,20 @@ body {
   margin-top: -100px; /* Remove the negative margin */
 }
 .folder-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-  }
-  
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
 .folder-item {
-    text-align: center;
-  }
-  
+  text-align: center;
+}
+
 .folder-item img {
-    width: 100px; /* Adjust the width as needed */
-    height: 100px; /* Adjust the height as needed */
-  }
-  
+  width: 100px; /* Adjust the width as needed */
+  height: 100px; /* Adjust the height as needed */
+}
+
 .sidebar {
   position: fixed;
   top: 0;

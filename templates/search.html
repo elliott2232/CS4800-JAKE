@@ -1,67 +1,82 @@
-<!--Joey-->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="{{ url_for('static', filename='css/search_style.css') }}" rel="stylesheet" type="text/css"/> 
-  <title>Search Page</title>
-</head>
-<body>
-  <div class="container">
-    <div class="left-side">
-        <div class="filters">        
-        <H3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="{{ url_for('static', filename='css/search_style.css') }}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <title>Search Page</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-side">
+        <div class="filters">
+          <h3>
             <a href="{{ url_for('home') }}">Go Back to Home</a>
-        </H3>
+          </h3>
         </div>
-    </div>
-    <div class="right-side">
+      </div>
+      <div class="right-side">
         <div class="search-section">
-            <form id="search-form" method="POST" action="/search">
-              <div class="search-bar">
-                  <img src="/static/images/search.png" width="30px" height="40px" alt="Search Icon">
-                  <input type="text" id="search-input" name="search_query" placeholder="Type an article, topic, or subject to find articles">
-                  <button type="submit">Search</button>
-              </div>
-            </form>
-            <p id="search-message">Search results will be displayed here.</p>
-           <div id="search-results">
+          <form id="search-form" method="POST" action="/search">
+            <div class="search-bar">
+              <img
+                src="/static/images/search.png"
+                width="30px"
+                height="40px"
+                alt="Search Icon"
+              />
+              <input
+                type="text"
+                id="search-input"
+                name="search_query"
+                placeholder="Type an article, topic, or subject to find articles"
+              />
+              <button type="submit">Search</button>
+            </div>
+          </form>
+          <p id="search-message">Search results will be displayed here.</p>
+          <div id="search-results">
             <!-- Display hyperlinked titles and URLs -->
             {% if results %}
             <ul>
               {% for result in results %}
               <li>
                 <a href="{{ result.get_url() }}" target="_blank"
-                  >{{ result.get_title() }}</a>
-                  <button onclick="addToFavorites('{{ result.get_title() }}')">Favorite</button>
+                  >{{ result.get_title() }}</a
+                >
+                <button onclick="addToFavorites('{{ result.get_title() }}')">
+                  Favorite
+                </button>
               </li>
               {% endfor %}
             </ul>
             {% else %}
             <p>No results found.</p>
             {% endif %}
-          <!-- this function actually adds the article to the app.py so it can be appended to the user db-->
-          <script>
-            function addToFavorites(articleTitle) {
-              fetch(`/add_favorite/${encodeURIComponent(articleTitle)}`)
-                .then(response => {
-                  if (response.ok) {
-                    alert(`${articleTitle} added to favorites!`);
-                  } else {
-                    alert(`Failed to add ${articleTitle} to favorites.`);
-                  }
-                })
-                .catch(error => console.error('Error:', error));
-            }
-          </script>
+            <script>
+              function addToFavorites(articleTitle) {
+                fetch(`/add_favorite/${encodeURIComponent(articleTitle)}`)
+                  .then((response) => {
+                    if (response.ok) {
+                      alert(`${articleTitle} added to favorites!`);
+                    } else {
+                      alert(`Failed to add ${articleTitle} to favorites.`);
+                    }
+                  })
+                  .catch((error) => console.error("Error:", error));
+              }
+            </script>
           </div>
         </div>
+      </div>
     </div>
-  </div>
-  
-  <div class="watermark">
-    <p>&copy; The One Stop Research Shop - JAKE 2023</p>
-  </div>
-</body>
+
+    <div class="watermark">
+      <p>&copy; The One Stop Research Shop - JAKE 2023</p>
+    </div>
+  </body>
 </html>

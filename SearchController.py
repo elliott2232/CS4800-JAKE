@@ -2,15 +2,11 @@ from Article import *
 from pymongo import MongoClient
 
 
-
+#Allan Tornero 
 class SearchController:
 
     def __init__(self):
         self.__article_list = []
-        
-        
-        
-        
         
         
     #Searches through all articles in database
@@ -28,7 +24,34 @@ class SearchController:
         list2 = self.search_collection("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority", "Articles", "Math", query) 
         for item in range(len(list2)):
             list2[item].set_is_math(True)
-            self.__article_list.append(list2[item])       
+            self.__article_list.append(list2[item])
+
+
+        #Collects articles from Math, search_collection() does query comparisons
+        list3 = self.search_collection("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority", "Articles", "Biology", query) 
+        for item in range(len(list3)):
+            list3[item].set_is_biology(True)
+            self.__article_list.append(list3[item])       
+
+
+        #Collects articles from Math, search_collection() does query comparisons
+        list4 = self.search_collection("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority", "Articles", "English", query) 
+        for item in range(len(list4)):
+            list4[item].set_is_english(True)
+            self.__article_list.append(list4[item])       
+
+
+        #Collects articles from Math, search_collection() does query comparisons
+        list5 = self.search_collection("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority", "Articles", "Physics", query) 
+        for item in range(len(list5)):
+            list5[item].set_is_physics(True)
+            self.__article_list.append(list5[item])
+
+ #Collects articles from Math, search_collection() does query comparisons
+        list6 = self.search_collection("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority", "Articles", "History", query) 
+        for item in range(len(list6)):
+            list6[item].set_is_physics(True)
+            self.__article_list.append(list6[item])                  
         
         
         
@@ -118,16 +141,12 @@ class SearchController:
             article.set_creator(result.get("creator"))
             article.set_publisher(result.get("publisher"))
             article.set_keyphrase(result.get("keyphrase"))
+            article.set_is_computer_science(True)
             self.__article_list.append(article)
 
-        self.print_list()    
+        return self.get_article_list()    
 
             
-
-
-
-
-
 
     #Function to return and print all aricles in math collection
     def show_all_math_button(self):
@@ -152,15 +171,108 @@ class SearchController:
             article.set_is_math(True)
             self.__article_list.append(article)
 
-        self.print_list()     
+        return self.get_article_list()     
 
 
-            
-            
-     
+    def show_all_history_button(self):
+        client = MongoClient("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority")
+        database = client["Articles"]
+        collection = database["History"]
+        
+        self.__article_list.clear()
+        article_list = []
+        
+        results = collection.find()
+        for result in results:
+            article = Article()
+            article.set_id(result.get("_id"))
+            article.set_title(result.get("title"))
+            article.set_isPartOf(result.get("isPartOf"))
+            article.set_publicationYear(result.get("publicationYear"))
+            article.set_url(result.get("url"))
+            article.set_creator(result.get("creator"))
+            article.set_publisher(result.get("publisher"))
+            article.set_keyphrase(result.get("keyphrase"))
+            article.set_is_history(True)
+            self.__article_list.append(article)
+
+        return self.get_article_list()
+    
+
+    def show_all_physics_button(self):
+        client = MongoClient("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority")
+        database = client["Articles"]
+        collection = database["Physics"]
+        
+        self.__article_list.clear()
+        article_list = []
+        
+        results = collection.find()
+        for result in results:
+            article = Article()
+            article.set_id(result.get("_id"))
+            article.set_title(result.get("title"))
+            article.set_isPartOf(result.get("isPartOf"))
+            article.set_publicationYear(result.get("publicationYear"))
+            article.set_url(result.get("url"))
+            article.set_creator(result.get("creator"))
+            article.set_publisher(result.get("publisher"))
+            article.set_keyphrase(result.get("keyphrase"))
+            article.set_is_physics(True)
+            self.__article_list.append(article)
+
+        return self.get_article_list()     
 
 
-     
+    def show_all_english_button(self):
+        client = MongoClient("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority")
+        database = client["Articles"]
+        collection = database["Physics"]
+        
+        self.__article_list.clear()
+        article_list = []
+        
+        results = collection.find()
+        for result in results:
+            article = Article()
+            article.set_id(result.get("_id"))
+            article.set_title(result.get("title"))
+            article.set_isPartOf(result.get("isPartOf"))
+            article.set_publicationYear(result.get("publicationYear"))
+            article.set_url(result.get("url"))
+            article.set_creator(result.get("creator"))
+            article.set_publisher(result.get("publisher"))
+            article.set_keyphrase(result.get("keyphrase"))
+            article.set_is_english(True)
+            self.__article_list.append(article)
+
+        return self.get_article_list()
+    
+    
+    def show_all_biology_button(self):
+        client = MongoClient("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority")
+        database = client["Articles"]
+        collection = database["Physics"]
+        
+        self.__article_list.clear()
+        article_list = []
+        
+        results = collection.find()
+        for result in results:
+            article = Article()
+            article.set_id(result.get("_id"))
+            article.set_title(result.get("title"))
+            article.set_isPartOf(result.get("isPartOf"))
+            article.set_publicationYear(result.get("publicationYear"))
+            article.set_url(result.get("url"))
+            article.set_creator(result.get("creator"))
+            article.set_publisher(result.get("publisher"))
+            article.set_keyphrase(result.get("keyphrase"))
+            article.set_is_biology(True)
+            self.__article_list.append(article)
+
+        return self.get_article_list()
+    
             
     #Function to sort list by date
     def sort_by_date_button(self):
@@ -178,41 +290,8 @@ class SearchController:
    #Function to sort list by relevancy
     def sort_by_relevancy(self):
         self.__article_list.sort(key = lambda article: article.get_queryMatch(), reverse = True)
-      
-    
-    
-    
-    #Prints list with matching results
-    def print_list(self):
-        for article in range(len(self.__article_list)):
-            print(self.__article_list[article])
-            
-            #Use to te visibly test and compare query, title, and keyword
-            #print(self.__article_list[article].get_keyphrase())
-            
-            
-            #For testing
-            '''
-            if article == 25:
-                break
-            '''
-    
-    
-    def filter_computer_science():
-        pass
     
     
     def get_article_list(self):
         return self.__article_list
         
-        
-    
-    
-    
-    
-    
-    
-    
-    
-   
-    

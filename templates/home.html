@@ -15,6 +15,27 @@
     />
     <title>The One Stop Research Shop</title>
   </head>
+  <script>
+    // Function to redirect to the search route for Computer Science
+    function redirectToSearchComputerScience() {
+      window.location.href = '/search_computer_science_folder';
+    }
+    function redirectToSearchMath() {
+      window.location.href = '/search_math_folder';
+    }
+    function redirectToSearchBiology() {
+      window.location.href = '/search_biology_folder';
+    }
+    function redirectToSearchPhysics() {
+      window.location.href = '/search_physics_folder';
+    }
+    function redirectToSearchHistory() {
+      window.location.href = '/search_history_folder';
+    }
+    function redirectToSearchEnglish() {
+      window.location.href = '/search_english_folder';
+    }
+  </script>
   <body>
     <div class="container">
       <div class="welcome-text">
@@ -26,27 +47,27 @@
       </div>
       <div class="folder-container">
         <!-- Individual folder divs -->
-        <div class="folder-item">
+        <div class="folder-item" onclick="redirectToSearchMath()">
           <img src="/static/images/folder.png" alt="Folder 1">
           <p>Math</p>
         </div>
-        <div class="folder-item">
+        <div class="folder-item" onclick="redirectToSearchComputerScience()">
           <img src="/static/images/folder.png" alt="Folder 2">
           <p>Computer Science</p>
         </div>
-        <div class="folder-item">
+        <div class="folder-item" onclick="redirectToSearchHistory()">
           <img src="/static/images/folder.png" alt="Folder 1">
           <p>History</p>
         </div>
-        <div class="folder-item">
+        <div class="folder-item" onclick="redirectToSearchEnglish()">
           <img src="/static/images/folder.png" alt="Folder 2">
           <p>English</p>
         </div>
-        <div class="folder-item">
+        <div class="folder-item" onclick="redirectToSearchBiology()">
           <img src="/static/images/folder.png" alt="Folder 1">
           <p>Biology</p>
         </div>
-        <div class="folder-item">
+        <div class="folder-item" onclick="redirectToSearchPhysics()">
           <img src="/static/images/folder.png" alt="Folder 2">
           <p>Physics</p>
         </div>
