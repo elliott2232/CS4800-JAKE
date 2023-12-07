@@ -15,24 +15,21 @@ body {
   padding: 35px;
   margin-top: -100px; /* Remove the negative margin */
 }
-
-#wrapper {
-  height: 200px;
-  overflow: auto;
-  width: 500px;
-  overflow-y: hidden;
-}
-
-#innerwrapper {
-  display: flex;
-  flex-wrap: nowrap;
-  width: 1200px; /* Adjust the total width of the inner wrapper */
-}
-
-#innerwrapper img {
-  margin-right: 10px;
-}
-
+.folder-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+.folder-item {
+    text-align: center;
+  }
+  
+.folder-item img {
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+  }
+  
 .sidebar {
   position: fixed;
   top: 0;
