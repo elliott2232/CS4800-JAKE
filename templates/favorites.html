@@ -1,3 +1,4 @@
+<!-- Joey (most css and html was written by me, except for the folder click pages-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +10,10 @@
 <body>
     <div class="container">
         <div class = "welcome-text">
-          <p>Favorites</p> <!-- Will need to make script to remember user's name-->
+          <p>Favorites</p> 
         </div>
         <div class="article-rows">
-              {% for favorite in favorites_list %}
+              {% for favorite in favorites_list %} <!-- show favs with hyperlink, also rm button -->
                 <a href="{{ favorite }}" target="_blank">{{ favorite }}</a>
                 <button onclick="removeFromFavorites('{{ favorite }}')">Remove</button>
                 {% endfor %}
