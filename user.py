@@ -6,7 +6,7 @@ from SearchController import *
 from hashlib import sha256
 
 class User:
-    def __init__(self, email, first_name, last_name, password, favorites=None): 
+    def __init__(self, email, first_name, last_name, password, favorites=None, **kwargs): 
         self.email = email
         self.first_name = first_name
         self.last_name = last_name
@@ -26,3 +26,11 @@ class User:
             "password": self.password,  # Use the hashed password directly
             "favorites": self.favorite  # Adjusted key name to follow snake_case convention
         }
+    
+    def add_favorite(self, article_title):
+        if article_title not in self.favorite:
+            self.favorite.append(article_title)
+
+    def remove_favorite(self, article_title):
+        if article_title in self.favorite:
+            self.favorite.remove(article_title)
