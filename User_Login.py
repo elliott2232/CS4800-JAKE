@@ -1,4 +1,6 @@
-
+#written by:  Elliott Lewis
+#Tested by:  Elliott Lewis
+#Debugged by: Elliott Lewis
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from Article import * 
@@ -8,7 +10,7 @@ from bson import ObjectId
 
 import hashlib
 
-#Elliott
+
 class UserLogin(UserObject):
     def __init__(self, mongodb_uri, database_name, collection_name):
         super().__init__(email="", first_name="", last_name="", password="", favorites="")  # Initialize with empty values
