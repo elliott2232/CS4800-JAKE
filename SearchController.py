@@ -231,7 +231,7 @@ class SearchController:
     def show_all_english_button(self):
         client = MongoClient("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority")
         database = client["Articles"]
-        collection = database["Physics"]
+        collection = database["English"]
         
         self.__article_list.clear()
         article_list = []
@@ -256,7 +256,7 @@ class SearchController:
     def show_all_biology_button(self):
         client = MongoClient("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority")
         database = client["Articles"]
-        collection = database["Physics"]
+        collection = database["Biology"]
         
         self.__article_list.clear()
         article_list = []
