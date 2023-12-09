@@ -1,3 +1,7 @@
+#written by: Allan Tornero
+#Tested by: Allan Tornero
+#Debugged by: Allan Tornero
+
 import urllib.parse
 
 class Article:

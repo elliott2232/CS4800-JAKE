@@ -1,8 +1,12 @@
+#written by: Allan Tornero
+#Tested by: Allan Tornero
+#Debugged by: Allan Tornero
+
 from Article import *
 from pymongo import MongoClient
 
 
-#Allan Tornero 
+
 class SearchController:
 
     def __init__(self):

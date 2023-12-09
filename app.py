@@ -1,4 +1,6 @@
-# Joey
+#written by: Joey and Elliot
+#Tested by: Joey and Elliot
+#Debugged by: Joey and Elliot
 
 from flask import Flask, request, render_template, flash, jsonify, redirect, url_for, session
 from main import search_articles, connect_to_cluster, UserRegistration, UserLogin

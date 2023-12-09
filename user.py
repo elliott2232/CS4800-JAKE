@@ -1,3 +1,7 @@
+#written by: Joey and Elliot
+#Tested by: Joey and Elliot
+#Debugged by: Joey and Elliot
+
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from Article import * 
