@@ -1,3 +1,9 @@
+#written by: Allan Tornero
+#Tested by: Allan Tornero
+#Debugged by: Allan Tornero
+
+#NOTE: THIS FILE WAS NOT USED IN THE FINAL SYSTEM
+
 from SearchController import *
 from Article import *
 
