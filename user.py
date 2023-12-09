@@ -1,6 +1,6 @@
-#written by: Joey and Elliot
-#Tested by: Joey and Elliot
-#Debugged by: Joey and Elliot
+#written by: Elliot Lewis
+#Tested by: Elliot Lewis
+#Debugged by: Elliot Lewis
 
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
@@ -14,7 +14,7 @@ class UserObject:
         self.first_name = first_name
         self.last_name = last_name
         self.password = self._hash_password(password)
-        self.favorite = favorites or []
+        self.favorite = favorites or [] #Joey
 
     @staticmethod
     def _hash_password(password): 
@@ -24,16 +24,16 @@ class UserObject:
     def to_dict(self):
         return {
             "email": self.email,
-            "First name": self.first_name,  # Adjusted key names to follow snake_case convention
+            "First name": self.first_name, 
             "Last name": self.last_name,
             "password": self.password,  # Use the hashed password directly
-            "favorites": self.favorite  # Adjusted key name to follow snake_case convention
+            "favorites": self.favorite #Joey
         }
     
-    def add_favorite(self, article_title):
+    def add_favorite(self, article_title): #Joey
         if article_title not in self.favorite:
             self.favorite.append(article_title)
 
-    def remove_favorite(self, article_title):
+    def remove_favorite(self, article_title): #Joey
         if article_title in self.favorite:
             self.favorite.remove(article_title)
