@@ -3,7 +3,6 @@
 #Debugged by: Joey and Elliot
 
 from flask import Flask, request, render_template, flash, jsonify, redirect, url_for, session
-from main import search_articles, connect_to_cluster
 from bson import ObjectId
 from SearchController import SearchController
 from User_Login import UserLogin
@@ -159,9 +158,6 @@ def remove_favorite(article_title):
 
 @app.route('/favorites') #get the user's favorites and add them to the favorites html
 def favorites():
-    client = connect_to_cluster(
-        "mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Users?retryWrites=true&w=majority")
-    results = search_articles(client, "favorites", "Profiles")
     if 'user_id' in session:
         user_id = session['user_id']
         user = user_registration.get_user_by_id(user_id)
