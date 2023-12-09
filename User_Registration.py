@@ -1,9 +1,9 @@
-'''''
+
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from Article import * 
 from SearchController import *
-from user import User
+from user import UserObject
 from bson import ObjectId
 
 import hashlib
@@ -25,7 +25,7 @@ class UserRegistration:
 
             if user_data:
                 # Create an instance of the User class using the retrieved data
-                user = User(
+                user = UserObject(
                     email=user_data.get("email"),
                     first_name=user_data.get("First name", ""),
                     last_name=user_data.get("Last name", ""),
@@ -51,7 +51,7 @@ class UserRegistration:
 
     def register_user(self, email, first_name, last_name, password, favorite=None): #doesnt matter favorite will not be handled on sign in, its default value is none
         try:
-            user_obj = User(email, first_name, last_name, password, favorite)
+            user_obj = UserObject(email, first_name, last_name, password, favorite)
             # Insert the user document into the collection
             result = self.collection.insert_one(user_obj.to_dict())
 
@@ -60,4 +60,3 @@ class UserRegistration:
 
         except Exception as e:
             print(f"Error registering user: {e}")
-'''
