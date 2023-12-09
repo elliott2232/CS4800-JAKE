@@ -156,7 +156,7 @@ class Article:
     def set_is_history(self, bool):
         self.__is_history = bool
         
-    def set_is_history(self, bool):
+    def get_is_history(self):
         return self.__is_history
 
    

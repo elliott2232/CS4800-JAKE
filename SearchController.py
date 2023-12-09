@@ -281,14 +281,14 @@ class SearchController:
     #Function to sort list by date
     def sort_by_date_button(self):
         self.__article_list.sort(key = lambda article: article.get_publicationYear(), reverse = True)
-        self.get_article_list()
+        return self.get_article_list()
     
     
     
     #Function to sort list by relevancy
     def sort_by_relevancy_button(self):
         self.__article_list.sort(key = lambda article: article.get_queryMatch(), reverse = True)
-        self.get_article_list()
+        return self.get_article_list()
         
    
    #Function to sort list by relevancy
