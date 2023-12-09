@@ -53,7 +53,7 @@ debugged by: Joey Perrello
                 <a href="{{ result.get_url() }}" target="_blank"
                   >{{ result.get_title() }}</a
                 >
-                <button onclick="addToFavorites('{{ result.get_title() }}')">
+                <button onclick="add_to_favorites_button('{{ result.get_title() }}')">
                   Favorite
                 </button>
               </li>
@@ -63,13 +63,13 @@ debugged by: Joey Perrello
             <p>No results found.</p>
             {% endif %}
             <script>
-              function addToFavorites(articleTitle) {
-                fetch(`/add_favorite/${encodeURIComponent(articleTitle)}`)
+              function add_to_favorites_button(article_title) {
+                fetch(`/add_favorite/${encodeURIComponent(article_title)}`)
                   .then((response) => {
                     if (response.ok) {
-                      alert(`${articleTitle} added to favorites!`);
+                      alert(`${article_title} added to favorites!`);
                     } else {
-                      alert(`Failed to add ${articleTitle} to favorites.`);
+                      alert(`Failed to add ${article_title} to favorites.`);
                     }
                   })
                   .catch((error) => console.error("Error:", error));

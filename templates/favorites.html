@@ -19,15 +19,15 @@ debugged by: Joey Perrello
         <div class="article-rows">
               {% for favorite in favorites_list %} 
                 <a href="{{ favorite }}" target="_blank">{{ favorite }}</a>
-                <button onclick="removeFromFavorites('{{ favorite }}')">Remove</button>
+                <button onclick="remove_from_favorites_button('{{ favorite }}')">Remove</button>
                 {% endfor %}
             </div>
           </div>
         </div>
         <script>
-          function removeFromFavorites(articleTitle) {
+          function remove_from_favorites_button(article_title) {
               var xhr = new XMLHttpRequest();
-              xhr.open("GET", "/remove_favorite/" + encodeURIComponent(articleTitle), true);
+              xhr.open("GET", "/remove_favorite/" + encodeURIComponent(article_title), true);
               xhr.onreadystatechange = function () {
                   if (xhr.readyState === 4 && xhr.status === 200) {
                       location.reload();  // Reload the page after removing from favorites
