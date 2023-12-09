@@ -8,7 +8,7 @@ from Article import *
 from SearchController import *
 from hashlib import sha256
 
-class User:
+class UserObject:
     def __init__(self, email, first_name, last_name, password, favorites=None, **kwargs): 
         self.email = email
         self.first_name = first_name
