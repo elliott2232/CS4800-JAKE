@@ -31,30 +31,30 @@ class SearchController:
             self.__article_list.append(list2[item])
 
 
-        #Collects articles from Math, search_collection() does query comparisons
+        #Collects articles from Biology, search_collection() does query comparisons
         list3 = self.search_collection("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority", "Articles", "Biology", query) 
         for item in range(len(list3)):
             list3[item].set_is_biology(True)
             self.__article_list.append(list3[item])       
 
 
-        #Collects articles from Math, search_collection() does query comparisons
+        #Collects articles from English, search_collection() does query comparisons
         list4 = self.search_collection("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority", "Articles", "English", query) 
         for item in range(len(list4)):
             list4[item].set_is_english(True)
             self.__article_list.append(list4[item])       
 
 
-        #Collects articles from Math, search_collection() does query comparisons
+        #Collects articles from Physics, search_collection() does query comparisons
         list5 = self.search_collection("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority", "Articles", "Physics", query) 
         for item in range(len(list5)):
             list5[item].set_is_physics(True)
             self.__article_list.append(list5[item])
 
- #Collects articles from Math, search_collection() does query comparisons
+        #Collects articles from History, search_collection() does query comparisons
         list6 = self.search_collection("mongodb+srv://Allan123:School123@cluster0.gqdysfd.mongodb.net/Articles?retryWrites=true&w=majority", "Articles", "History", query) 
         for item in range(len(list6)):
-            list6[item].set_is_physics(True)
+            list6[item].set_is_history(True)
             self.__article_list.append(list6[item])                  
         
         
