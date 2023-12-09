@@ -1,6 +1,6 @@
-#written by: Joey and Elliot
-#Tested by: Joey and Elliot
-#Debugged by: Joey and Elliot
+#written by: Joey and Elliott
+#Tested by: Joey and Elliott
+#Debugged by: Joey and Elliott
 
 from flask import Flask, request, render_template, flash, jsonify, redirect, url_for, session
 from bson import ObjectId
@@ -25,64 +25,64 @@ user_login = UserLogin(
     database_name="Users", collection_name="Profiles")
 
 search_controller = SearchController()
-
+#Joey
 @app.route('/')
 def landing_page():
     return render_template('landing_page.html')
-
+#Joey
 @app.route('/search', methods=['POST'])
 def search():
     search_query = request.form['search_query']  # Get the search query from the form
     results = search_controller.search_all_button(search_query)
 
     return render_template('search.html', results = results)
-
+#Elliott
 @app.route('/search_computer_science_folder')
 def search_computer_science_folder():
     # Call the function to search computer science articles
     search_controller.show_all_computer_science_button()  
     article_list = search_controller.get_article_list()
     return render_template('show_computer_science.html', article_list=article_list)
-
+#Elliott
 @app.route('/search_math_folder')
 def search_math_folder():
     # Call the function to search math articles
     search_controller.show_all_math_button()  
     article_list = search_controller.get_article_list()
     return render_template('show_math.html', article_list=article_list)
-
+#Elliott
 @app.route('/search_physics_folder')
 def search_physics_folder():
     # Call the function to search physics articles
     search_controller.show_all_physics_button()  
     article_list = search_controller.get_article_list()
     return render_template('show_physics.html', article_list=article_list)
-
+#Elliott
 @app.route('/search_english_folder')
 def search_english_folder():
     # Call the function to search english articles
     search_controller.show_all_english_button()  
     article_list = search_controller.get_article_list()
     return render_template('show_english.html', article_list=article_list)
-
+#Elliott
 @app.route('/search_history_folder')
 def search_history_folder():
     # Call the function to search history articles
     search_controller.show_all_history_button()  
     article_list = search_controller.get_article_list()
     return render_template('show_history.html', article_list=article_list)
-
+#Elliott
 @app.route('/search_biology_folder')
 def search_biology_folder():
     # Call the function to search biology articles
     search_controller.show_all_biology_button()  
     article_list = search_controller.get_article_list()
     return render_template('show_biology.html', article_list=article_list)
-
+#Elliott
 @app.route('/search', methods=['GET'])
 def show_search_page():
     return render_template('search.html')
-
+#Elliott
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -104,7 +104,7 @@ def login():
             flash('Invalid username or password', 'error')
             return render_template('login.html')
     return render_template('login.html')
-
+#Elliott
 @app.route('/create_account', methods=['GET', 'POST'])
 def create_account():
     if request.method == 'POST':
@@ -120,15 +120,15 @@ def create_account():
         return redirect(url_for('login'))
 
     return render_template('create_account.html')
-
+#Joey
 @app.route('/home')
 def home():
     return render_template('home.html')
-
+#Joey
 @app.route('/user')
 def user():
     return render_template('user.html')
-
+#Joey
 @app.route('/add_favorite/<article_title>') #this is needed to add favorites and route them to fav page
 def add_favorite(article_title):
     if 'user_id' in session:
@@ -140,7 +140,7 @@ def add_favorite(article_title):
             user_registration.update_user(user_id, user.to_dict())
 
     return redirect(url_for('favorites'))
-
+#Joey
 @app.route('/remove_favorite/<article_title>')
 def remove_favorite(article_title):
     if 'user_id' in session:
@@ -155,7 +155,7 @@ def remove_favorite(article_title):
     return redirect(url_for('favorites'))
 
 
-
+#Joey
 @app.route('/favorites') #get the user's favorites and add them to the favorites html
 def favorites():
     if 'user_id' in session:
@@ -168,13 +168,6 @@ def favorites():
         
     return redirect(url_for('login'))
 
-@app.route('/history')
-def history():
-    return render_template('history.html')
-
-@app.route('/help')
-def help():
-    return render_template('help.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
